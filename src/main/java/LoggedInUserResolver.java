@@ -1,5 +1,4 @@
 import java.util.Random;
-import java.util.UUID;
 
 class LoggedInUserResolver {
 
@@ -12,7 +11,7 @@ class LoggedInUserResolver {
 
     public static synchronized LoggedInUserResolver getInstance() {
         if (instance == null) {
-            return new LoggedInUserResolver();
+            instance = new LoggedInUserResolver();
         }
         return instance;
     }
