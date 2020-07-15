@@ -87,9 +87,9 @@ class Order {
                 this.startedAt,
                 this.productId,
                 this.quantity,
-                this.finishedAt ,
+                this.finishedAt,
                 state.getName(),
-                this.assignedEmployee.getName()
+                this.assignedEmployee == null ? null : this.assignedEmployee.getName()
         );
         System.out.println(formattedMessage);
     }

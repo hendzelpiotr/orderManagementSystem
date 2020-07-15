@@ -10,7 +10,7 @@ class RegisterOrderCommand extends Command {
     }
 
     @Override
-    void execute() {
+    public void execute() {
         final OrderDirector director = new OrderDirector();
         OrderBuilder builder = new OrderBuilder();
         director.constructNewOrder(builder);

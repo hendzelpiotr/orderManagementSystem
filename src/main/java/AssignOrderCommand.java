@@ -4,7 +4,10 @@ class AssignOrderCommand extends Command {
     private final String employeeFirstName;
     private final String employeeLastName;
 
-    public AssignOrderCommand(OrderStorage storage, int orderId, String employeeFirstName, String employeeLastName) {
+    public AssignOrderCommand(OrderStorage storage,
+                              int orderId,
+                              String employeeFirstName,
+                              String employeeLastName) {
         super(storage);
         this.orderId = orderId;
         this.employeeFirstName = employeeFirstName.trim();
@@ -12,7 +15,7 @@ class AssignOrderCommand extends Command {
     }
 
     @Override
-    void execute() {
+    public void execute() {
         final Order order = storage.getOrder(orderId);
 
         if (order == null) {

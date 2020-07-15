@@ -6,6 +6,6 @@ public abstract class Command {
         this.storage = storage;
     }
 
-    abstract void execute();
+    public abstract void execute();
 
 }

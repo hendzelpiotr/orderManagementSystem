@@ -7,5 +7,4 @@ public interface Builder {
     Builder withQuantity(int quantity);
     Builder withProductId(int product);
     Builder withCreatedBy(int userId);
-    Builder withEmployee(Employee employee);
 }

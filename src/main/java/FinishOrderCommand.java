@@ -8,7 +8,7 @@ class FinishOrderCommand extends Command {
     }
 
     @Override
-    void execute() {
+    public void execute() {
         final Order order = storage.getOrder(orderId);
 
         if (order == null) {

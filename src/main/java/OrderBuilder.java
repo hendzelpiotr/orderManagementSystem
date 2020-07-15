@@ -8,7 +8,6 @@ class OrderBuilder implements Builder {
     private int quantity;
     private int productId;
     private int createdBy;
-    private Employee employee;
 
     @Override
     public OrderBuilder withOrderId(int orderId) {
@@ -43,12 +42,6 @@ class OrderBuilder implements Builder {
     @Override
     public OrderBuilder withCreatedBy(int userId) {
         this.createdBy = userId;
-        return this;
-    }
-
-    @Override
-    public Builder withEmployee(Employee employee) {
-        this.employee = employee;
         return this;
     }
 

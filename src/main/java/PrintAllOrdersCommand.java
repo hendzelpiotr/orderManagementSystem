@@ -7,7 +7,7 @@ class PrintAllOrdersCommand extends Command {
     }
 
     @Override
-    void execute() {
+    public void execute() {
         final List<Order> orders = storage.getAll();
 
         if (orders.isEmpty()) {

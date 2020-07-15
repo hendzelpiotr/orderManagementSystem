@@ -1,14 +1,14 @@
 import java.util.Scanner;
 
-class UserInterface {
+public class UserInterface {
 
     private final OrderStorage orderStorage;
 
-    UserInterface() {
+    public UserInterface() {
         this.orderStorage = OrderStorage.getInstance();
     }
 
-    void runUI() {
+    public void runUI() {
         final Scanner input = new Scanner(System.in);
 
         System.out.println("-----------------------------------");
@@ -26,13 +26,13 @@ class UserInterface {
                     handleNewOrderOption(input);
                     break;
                 case "2":
-                    handleAssignEmployeeOption(input, orderStorage);
+                    handleAssignEmployeeOption(input);
                     break;
                 case "3":
-                    handleFinishOption(input, orderStorage);
+                    handleFinishOption(input);
                     break;
                 case "4":
-                    handleRejectOption(input, orderStorage);
+                    handleRejectOption(input);
                     break;
                 case "9":
                     handlePrintCacheOption();
@@ -53,7 +53,7 @@ class UserInterface {
         new RegisterOrderCommand(this.orderStorage, productId, quantity).execute();
     }
 
-    private void handleAssignEmployeeOption(Scanner input, OrderStorage orderStorage) {
+    private void handleAssignEmployeeOption(Scanner input) {
         int orderId;
         System.out.println("Please enter order id");
         orderId = readIntValue(input);
@@ -62,27 +62,27 @@ class UserInterface {
         System.out.println("Please enter last name of the employee you want to assign to this order");
         String employeeLastName = readStringValue(input);
 
-        new AssignOrderCommand(orderStorage, orderId, employeeFirstName, employeeLastName).execute();
+        new AssignOrderCommand(this.orderStorage, orderId, employeeFirstName, employeeLastName).execute();
     }
 
-    private void handleFinishOption(Scanner input, OrderStorage orderStorage) {
+    private void handleFinishOption(Scanner input) {
         int orderId;
         System.out.println("Please enter order id");
         orderId = readIntValue(input);
 
-        new FinishOrderCommand(orderStorage, orderId).execute();
+        new FinishOrderCommand(this.orderStorage, orderId).execute();
     }
 
     private void handlePrintAllOption() {
         new PrintAllOrdersCommand(this.orderStorage).execute();
     }
 
-    private void handleRejectOption(Scanner input, OrderStorage orderStorage) {
+    private void handleRejectOption(Scanner input) {
         int orderId;
         System.out.println("Please enter order id");
         orderId = readIntValue(input);
 
-        new RejectOrderCommand(orderStorage, orderId).execute();
+        new RejectOrderCommand(this.orderStorage, orderId).execute();
     }
 
     private void handlePrintCacheOption() {
@@ -104,14 +104,13 @@ class UserInterface {
         String value = input.nextLine();
         int intValue = 0;
 
-        while (value == null || value.trim().equals("") || intValue == 0) {
-            System.out.println("Please enter numeric value.");
-            value = input.nextLine();
-
+        while (value.trim().equals("") || intValue == 0) {
             try {
                 intValue = Integer.parseInt(value);
             } catch (Exception e) {
                 intValue = 0;
+                System.out.println("Please enter numeric value.");
+                value = input.nextLine();
             }
         }
 
