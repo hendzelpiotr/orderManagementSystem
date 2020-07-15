@@ -81,7 +81,7 @@ class Order {
                         "\n\t - quantity: %s " +
                         "\n\t - finishedAt: %s " +
                         "\n\t - current state: %s  " +
-                        "\n\t - assigned employee: %s",
+                        "\n\t - assigned employee: %s ",
                 this.orderId,
                 this.createdBy,
                 this.startedAt,
